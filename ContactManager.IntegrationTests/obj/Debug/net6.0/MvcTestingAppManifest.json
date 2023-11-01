@@ -1,0 +1,5 @@
+{
+  "ContactManager.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/frank\/RiderProjects\/Clean_Architecture\/ContactManager.UI",
+  "ContactsManager.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/frank\/RiderProjects\/Clean_Architecture\/ContactsManager.Core",
+  "ContactsManager.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/frank\/RiderProjects\/Clean_Architecture\/ContactsManager.Infrastructure"
+}

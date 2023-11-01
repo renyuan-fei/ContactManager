@@ -1,0 +1,50 @@
+2023-11-02 01:58:00.663 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 01:58:00.708 +10:30 [INF] Request starting HTTP/1.1 GET http://localhost/Persons/Index - -
+2023-11-02 01:58:00.718 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:58:00.731 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 01:58:00.780 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:00.781 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:00.781 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:58:00.781 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:00.781 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:58:00.781 +10:30 [INF] Index action method of PersonsController
+2023-11-02 01:58:00.783 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 01:58:00.783 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 01:58:01.128 +10:30 [INF] Time for Filtered Persons from Database completed in 345.0 ms
+2023-11-02 01:58:01.131 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 01:58:01.132 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:58:01.147 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:01.147 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:58:01.147 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:01.147 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:01.152 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 01:58:01.206 +10:30 [INF] Executed ViewResult - view Index executed in 53.4713ms.
+2023-11-02 01:58:01.206 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 474.6358ms
+2023-11-02 01:58:01.206 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:58:01.207 +10:30 [INF] HTTP GET /Persons/Index responded 200 in 496.6515 ms
+2023-11-02 01:58:01.210 +10:30 [INF] Request finished HTTP/1.1 GET http://localhost/Persons/Index - - - 200 - text/html;+charset=utf-8 503.6356ms
+2023-11-02 01:58:09.188 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 01:58:09.232 +10:30 [INF] Request starting HTTP/1.1 GET http://localhost/Persons/Index - -
+2023-11-02 01:58:09.242 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:58:09.256 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 01:58:09.307 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.307 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.307 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:58:09.307 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.307 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:58:09.308 +10:30 [INF] Index action method of PersonsController
+2023-11-02 01:58:09.309 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 01:58:09.310 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 01:58:09.649 +10:30 [INF] Time for Filtered Persons from Database completed in 339.2 ms
+2023-11-02 01:58:09.652 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 01:58:09.654 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:58:09.668 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.668 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:58:09.668 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.668 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:58:09.673 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 01:58:09.731 +10:30 [INF] Executed ViewResult - view Index executed in 58.2859ms.
+2023-11-02 01:58:09.732 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 476.2512ms
+2023-11-02 01:58:09.732 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:58:09.733 +10:30 [INF] HTTP GET /Persons/Index responded 200 in 498.7355 ms
+2023-11-02 01:58:09.736 +10:30 [INF] Request finished HTTP/1.1 GET http://localhost/Persons/Index - - - 200 - text/html;+charset=utf-8 505.6361ms

@@ -1,0 +1,116 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\LICENSE" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\LICENSE.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="Pages\Countries\UploadFromExcel.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Home\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Persons\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Persons\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Persons\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Persons\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Persons\PersonsPDF.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Shared\_GridColumnHeader.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\_ViewStart.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\favicon.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+      <PackageReference Include="Serilog" Version="3.0.1" />
+      <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+      <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />
+      <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ContactsManager.Core\ContactsManager.Core.csproj" />
+      <ProjectReference Include="..\ContactsManager.Infrastructure\ContactsManager.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Pages\Countries\UploadFromExcel.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Home\Error.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Persons\Create.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Persons\Delete.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Persons\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Persons\Index.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Persons\PersonsPDF.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Shared\_GridColumnHeader.cshtml" />
+      <UpToDateCheckInput Remove="Pages\Shared\_Layout.cshtml" />
+      <UpToDateCheckInput Remove="Pages\_ViewImports.cshtml" />
+      <UpToDateCheckInput Remove="Pages\_ViewStart.cshtml" />
+    </ItemGroup>
+
+</Project>

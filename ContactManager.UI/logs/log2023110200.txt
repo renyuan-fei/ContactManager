@@ -1,0 +1,482 @@
+2023-11-02 00:02:58.930 +10:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-11-02 00:02:58.961 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-11-02 00:02:58.963 +10:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-11-02 00:02:59.021 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2023-11-02 00:02:59.023 +10:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-11-02 00:02:59.023 +10:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-11-02 00:02:59.025 +10:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2023-11-02 00:02:59.034 +10:30 [INF] Applying migration '20231101133242_Initial'.
+2023-11-02 00:02:59.065 +10:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Countries] (
+    [CountryID] uniqueidentifier NOT NULL,
+    [CountryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_Countries] PRIMARY KEY ([CountryID])
+);
+2023-11-02 00:02:59.067 +10:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Persons] (
+    [PersonID] uniqueidentifier NOT NULL,
+    [PersonName] nvarchar(40) NULL,
+    [Email] nvarchar(40) NULL,
+    [DateOfBirth] datetime2 NULL,
+    [Gender] nvarchar(10) NULL,
+    [Address] nvarchar(200) NULL,
+    [ReceiveNewsLetters] bit NOT NULL,
+    [TaxIdentificationNumber] varchar(8) NULL DEFAULT 'ABC12345',
+    [CountryID] uniqueidentifier NULL,
+    CONSTRAINT [PK_Persons] PRIMARY KEY ([PersonID]),
+    CONSTRAINT [CHK_TIN] CHECK (len([TaxIdentificationNumber]) = 8),
+    CONSTRAINT [FK_Persons_Countries_CountryID] FOREIGN KEY ([CountryID]) REFERENCES [Countries] ([CountryID])
+);
+2023-11-02 00:02:59.093 +10:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CountryID', N'CountryName') AND [object_id] = OBJECT_ID(N'[Countries]'))
+    SET IDENTITY_INSERT [Countries] ON;
+INSERT INTO [Countries] ([CountryID], [CountryName])
+VALUES ('12e15727-d369-49a9-8b13-bc22e9362179', N'China'),
+('14629847-905a-4a0e-9abe-80b61655c5cb', N'Philippines'),
+('501c6d33-1bbe-45f1-8fbd-2275913c6218', N'China'),
+('56bf46a4-02b8-4693-a0f5-0a95e2218bdc', N'Thailand'),
+('8f30bedc-47dd-4286-8950-73d8a68e5d41', N'Palestinian Territory');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CountryID', N'CountryName') AND [object_id] = OBJECT_ID(N'[Countries]'))
+    SET IDENTITY_INSERT [Countries] OFF;
+2023-11-02 00:02:59.104 +10:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'PersonID', N'Address', N'CountryID', N'DateOfBirth', N'Email', N'Gender', N'PersonName', N'ReceiveNewsLetters') AND [object_id] = OBJECT_ID(N'[Persons]'))
+    SET IDENTITY_INSERT [Persons] ON;
+INSERT INTO [Persons] ([PersonID], [Address], [CountryID], [DateOfBirth], [Email], [Gender], [PersonName], [ReceiveNewsLetters])
+VALUES ('012107df-862f-4f16-ba94-e5c16886f005', N'413 Sachtjen Way', '12e15727-d369-49a9-8b13-bc22e9362179', '1990-09-20T00:00:00.0000000', N'hmosco8@tripod.com', N'Male', N'Hansiain', CAST(1 AS bit)),
+('28d11936-9466-4a4b-b9c5-2f0a8e0cbde9', N'2 Warrior Avenue', '501c6d33-1bbe-45f1-8fbd-2275913c6218', '1990-05-24T00:00:00.0000000', N'mconachya@va.gov', N'Female', N'Minta', CAST(1 AS bit)),
+('29339209-63f5-492f-8459-754943c74abf', N'57449 Brown Way', '12e15727-d369-49a9-8b13-bc22e9362179', '1983-02-16T00:00:00.0000000', N'mjarrell6@wisc.edu', N'Male', N'Maddy', CAST(1 AS bit)),
+('2a6d3738-9def-43ac-9279-0310edc7ceca', N'97570 Raven Circle', '8f30bedc-47dd-4286-8950-73d8a68e5d41', '1988-01-04T00:00:00.0000000', N'mlingfoot5@netvibes.com', N'Male', N'Mitchael', CAST(0 AS bit)),
+('89e5f445-d89f-4e12-94e0-5ad5b235d704', N'50467 Holy Cross Crossing', '56bf46a4-02b8-4693-a0f5-0a95e2218bdc', '1995-02-11T00:00:00.0000000', N'ttregona4@stumbleupon.com', N'Gender', N'Tani', CAST(0 AS bit)),
+('a3b9833b-8a4d-43e9-8690-61e08df81a9a', N'9334 Fremont Street', '501c6d33-1bbe-45f1-8fbd-2275913c6218', '1987-01-19T00:00:00.0000000', N'vklussb@nationalgeographic.com', N'Female', N'Verene', CAST(1 AS bit)),
+('ac660a73-b0b7-4340-abc1-a914257a6189', N'4 Stuart Drive', '12e15727-d369-49a9-8b13-bc22e9362179', '1998-12-02T00:00:00.0000000', N'pretchford7@virginia.edu', N'Female', N'Pegeen', CAST(1 AS bit)),
+('c03bbe45-9aeb-4d24-99e0-4743016ffce9', N'4 Parkside Point', '56bf46a4-02b8-4693-a0f5-0a95e2218bdc', '1989-08-28T00:00:00.0000000', N'mwebsdale0@people.com.cn', N'Female', N'Marguerite', CAST(0 AS bit)),
+('c3abddbd-cf50-41d2-b6c4-cc7d5a750928', N'6 Morningstar Circle', '14629847-905a-4a0e-9abe-80b61655c5cb', '1990-10-05T00:00:00.0000000', N'ushears1@globo.com', N'Female', N'Ursa', CAST(0 AS bit)),
+('c6d50a47-f7e6-4482-8be0-4ddfc057fa6e', N'73 Heath Avenue', '14629847-905a-4a0e-9abe-80b61655c5cb', '1995-02-10T00:00:00.0000000', N'fbowsher2@howstuffworks.com', N'Male', N'Franchot', CAST(1 AS bit)),
+('cb035f22-e7cf-4907-bd07-91cfee5240f3', N'484 Clarendon Court', '8f30bedc-47dd-4286-8950-73d8a68e5d41', '1997-09-25T00:00:00.0000000', N'lwoodwing9@wix.com', N'Male', N'Lombard', CAST(0 AS bit)),
+('d15c6d9f-70b4-48c5-afd3-e71261f1a9be', N'83187 Merry Drive', '12e15727-d369-49a9-8b13-bc22e9362179', '1987-01-09T00:00:00.0000000', N'asarvar3@dropbox.com', N'Male', N'Angie', CAST(1 AS bit));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'PersonID', N'Address', N'CountryID', N'DateOfBirth', N'Email', N'Gender', N'PersonName', N'ReceiveNewsLetters') AND [object_id] = OBJECT_ID(N'[Persons]'))
+    SET IDENTITY_INSERT [Persons] OFF;
+2023-11-02 00:02:59.109 +10:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Persons_CountryID] ON [Persons] ([CountryID]);
+2023-11-02 00:02:59.110 +10:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231101133242_Initial', N'7.0.13');
+2023-11-02 00:03:55.930 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 00:03:56.011 +10:30 [INF] Now listening on: https://localhost:7276
+2023-11-02 00:03:56.012 +10:30 [INF] Now listening on: http://localhost:5062
+2023-11-02 00:03:56.703 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:03:56.719 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:03:56.748 +10:30 [INF] Route matche2023-11-02 00:07:41.124 +10:30 [INF] Application is shutting down...
+er action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:03:56.848 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:56.848 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:56.848 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:03:56.848 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:56.848 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:03:56.849 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:03:56.851 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:03:56.853 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:03:57.885 +10:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:03:57.948 +10:30 [INF] Time for Filtered Persons from Database completed in 1095.6 ms
+2023-11-02 00:03:57.955 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:03:57.958 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:03:57.981 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:57.981 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:03:57.981 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:57.981 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:03:57.988 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:03:57.993 +10:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/Persons/Index.cshtml","/Views/Shared/Index.cshtml"]
+2023-11-02 00:03:58.003 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 1250.124ms
+2023-11-02 00:03:58.005 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:03:58.009 +10:30 [ERR] HTTP GET / responded 500 in 1300.9374 ms
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-11-02 00:03:58.028 +10:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-11-02 00:03:58.070 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 500 - text/html;+charset=utf-8 1368.1345ms
+2023-11-02 00:03:58.249 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/favicon.ico - -
+2023-11-02 00:03:58.252 +10:30 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/wwwroot/favicon.ico'
+2023-11-02 00:03:58.252 +10:30 [INF] HTTP GET /favicon.ico responded 200 in 2.7633 ms
+2023-11-02 00:03:58.252 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/favicon.ico - - - 200 0 image/x-icon 3.2131ms
+2023-11-02 00:07:43.622 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 00:07:43.695 +10:30 [INF] Now listening on: https://localhost:7276
+2023-11-02 00:07:43.696 +10:30 [INF] Now listening on: http://localhost:5062
+2023-11-02 00:07:44.359 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:07:44.375 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:07:44.406 +10:30 [INF] Route matche2023-11-02 00:20:30.991 +10:30 [INF] Application is shutting down...
+er action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:07:44.511 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:44.512 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:44.512 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:07:44.512 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:44.512 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:07:44.513 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:07:44.515 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:07:44.517 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:07:45.610 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:07:45.675 +10:30 [INF] Time for Filtered Persons from Database completed in 1158.5 ms
+2023-11-02 00:07:45.682 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:07:45.685 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:07:45.708 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:45.708 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:07:45.708 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:45.709 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:07:45.715 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:07:45.720 +10:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/Persons/Index.cshtml","/Views/Shared/Index.cshtml"]
+2023-11-02 00:07:45.730 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 1319.0216ms
+2023-11-02 00:07:45.731 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:07:45.735 +10:30 [ERR] HTTP GET / responded 500 in 1370.7655 ms
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-11-02 00:07:45.751 +10:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-11-02 00:07:45.791 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 500 - text/html;+charset=utf-8 1434.2872ms
+2023-11-02 00:10:43.674 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:10:43.675 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:10:43.678 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:10:43.685 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.685 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.685 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:10:43.685 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.685 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:10:43.686 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:10:43.686 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:10:43.686 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:10:43.699 +10:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:10:43.701 +10:30 [INF] Time for Filtered Persons from Database completed in 15.2 ms
+2023-11-02 00:10:43.701 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:10:43.702 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:10:43.702 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.702 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:10:43.702 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.702 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:10:43.702 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:10:43.702 +10:30 [ERR] The view 'Index' was not found. Searched locations: ["/Views/Persons/Index.cshtml","/Views/Shared/Index.cshtml"]
+2023-11-02 00:10:43.703 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 24.7913ms
+2023-11-02 00:10:43.703 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:10:43.704 +10:30 [ERR] HTTP GET / responded 500 in 29.0560 ms
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-11-02 00:10:43.705 +10:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Index' was not found. The following locations were searched:
+/Views/Persons/Index.cshtml
+/Views/Shared/Index.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-11-02 00:10:43.710 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 500 - text/html;+charset=utf-8 36.0816ms
+2023-11-02 00:20:34.780 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 00:20:34.854 +10:30 [INF] Now listening on: https://localhost:7276
+2023-11-02 00:20:34.854 +10:30 [INF] Now listening on: http://localhost:5062
+2023-11-02 00:20:35.420 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:20:35.435 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:35.464 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:20:35.560 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:35.560 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:35.561 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:35.561 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:35.561 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:35.562 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:20:35.563 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:20:35.565 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:20:36.615 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:20:36.681 +10:30 [INF] Time for Filtered Persons from Database completed in 1116.9 ms
+2023-11-02 00:20:36.692 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:20:36.696 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:36.719 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:36.720 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:36.720 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:36.720 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:36.730 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:20:36.867 +10:30 [INF] Executed ViewResult - view Index executed in 138.2293ms.
+2023-11-02 00:20:36.869 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 1405.0193ms
+2023-11-02 00:20:36.870 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:36.874 +10:30 [INF] HTTP GET / responded 200 in 1449.2882 ms
+2023-11-02 00:20:36.891 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 1473.6832ms
+2023-11-02 00:20:36.962 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/Stylesheet.css - -
+2023-11-02 00:20:36.964 +10:30 [INF] HTTP GET /Stylesheet.css responded 404 in 1.1575 ms
+2023-11-02 00:20:36.964 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/Stylesheet.css - - - 404 0 - 1.5601ms
+2023-11-02 00:20:41.482 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:20:41.483 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:41.485 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:20:41.487 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.487 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.488 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:41.488 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.488 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:41.489 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:20:41.489 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:20:41.489 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:20:41.505 +10:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:20:41.507 +10:30 [INF] Time for Filtered Persons from Database completed in 18.1 ms
+2023-11-02 00:20:41.508 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:20:41.508 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:41.508 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.508 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:41.508 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.509 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:41.509 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:20:41.512 +10:30 [INF] Executed ViewResult - view Index executed in 3.0685ms.
+2023-11-02 00:20:41.512 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 27.1773ms
+2023-11-02 00:20:41.512 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:41.512 +10:30 [INF] HTTP GET / responded 200 in 29.4205 ms
+2023-11-02 00:20:41.512 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 30.0149ms
+2023-11-02 00:20:44.949 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:20:44.950 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:44.952 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:20:44.973 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:44.973 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:44.973 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:44.973 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:44.973 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:20:44.973 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:20:44.973 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:20:44.973 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:20:45.009 +10:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:20:45.009 +10:30 [INF] Time for Filtered Persons from Database completed in 36.3 ms
+2023-11-02 00:20:45.010 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:20:45.010 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:45.010 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:45.010 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:20:45.010 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:45.010 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:20:45.010 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:20:45.012 +10:30 [INF] Executed ViewResult - view Index executed in 1.6403ms.
+2023-11-02 00:20:45.012 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 59.092ms
+2023-11-02 00:20:45.012 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:20:45.012 +10:30 [INF] HTTP GET / responded 200 in 62.0115 ms
+2023-11-02 00:20:45.012 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 62.5580ms
+2023-11-02 00:20:45.021 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/Stylesheet.css - -
+2023-11-02 00:20:45.022 +10:30 [INF] HTTP GET /Stylesheet.css responded 404 in 1.0273 ms
+2023-11-02 00:20:45.023 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/Stylesheet.css - - - 404 0 - 1.3714ms
+2023-11-02 00:20:45.091 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/favicon.ico - -
+2023-11-02 00:20:45.097 +10:30 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/wwwroot/favicon.ico'
+2023-11-02 00:20:45.097 +10:30 [INF] HTTP GET /favicon.ico responded 200 in 5.9254 ms
+2023-11-02 00:20:45.097 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/favicon.ico - - - 200 0 image/x-icon 6.2007ms
+2023-11-02 00:21:12.807 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:21:12.807 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:12.807 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:21:12.808 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.808 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.808 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:12.808 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.808 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:12.808 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:21:12.808 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:21:12.808 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:21:12.811 +10:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:21:12.812 +10:30 [INF] Time for Filtered Persons from Database completed in 3.4 ms
+2023-11-02 00:21:12.812 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:21:12.812 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:12.812 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.812 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:12.812 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.812 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:12.812 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:21:12.813 +10:30 [INF] Executed ViewResult - view Index executed in 0.8705ms.
+2023-11-02 00:21:12.813 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 5.5358ms
+2023-11-02 00:21:12.813 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:12.813 +10:30 [INF] HTTP GET / responded 200 in 5.8229 ms
+2023-11-02 00:21:12.813 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 6.0627ms
+2023-11-02 00:21:12.905 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/Stylesheet.css - -
+2023-11-02 00:21:12.911 +10:30 [INF] Sending file. Request path: '/Stylesheet.css'. Physical path: '/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/wwwroot/Stylesheet.css'
+2023-11-02 00:21:12.911 +10:30 [INF] HTTP GET /Stylesheet.css responded 200 in 5.6860 ms
+2023-11-02 00:21:12.911 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/Stylesheet.css - - - 200 10279 text/css 5.8958ms
+2023-11-02 00:21:23.346 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 00:21:23.347 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:23.347 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:21:23.348 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.348 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.348 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:23.348 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.348 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:23.348 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:21:23.348 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:21:23.349 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 00:21:23.354 +10:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 00:21:23.356 +10:30 [INF] Time for Filtered Persons from Database completed in 7.1 ms
+2023-11-02 00:21:23.356 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:21:23.356 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:23.356 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.356 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:23.356 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.356 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:23.356 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:21:23.357 +10:30 [INF] Executed ViewResult - view Index executed in 0.8825ms.
+2023-11-02 00:21:23.357 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 10.1821ms
+2023-11-02 00:21:23.357 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:23.357 +10:30 [INF] HTTP GET / responded 200 in 10.7103 ms
+2023-11-02 00:21:23.358 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 11.2947ms
+2023-11-02 00:21:23.365 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/Stylesheet.css - -
+2023-11-02 00:21:23.366 +10:30 [INF] Sending file. Request path: '/Stylesheet.css'. Physical path: '/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/wwwroot/Stylesheet.css'
+2023-11-02 00:21:23.366 +10:30 [INF] HTTP GET /Stylesheet.css responded 200 in 1.3724 ms
+2023-11-02 00:21:23.366 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/Stylesheet.css - - - 200 10279 text/css 1.6707ms
+2023-11-02 00:21:32.724 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/Persons/Index?searchBy=PersonName&searchString= - -
+2023-11-02 00:21:32.724 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:32.732 +10:30 [INF] Route matched with {action = "Index", controller = "Persons"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 00:21:32.743 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.743 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.743 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:32.743 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.744 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 00:21:32.744 +10:30 [INF] Index action method of PersonsController
+2023-11-02 00:21:32.744 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 00:21:32.745 +10:30 [INF] GetFilteredPersons of PersonsRepository
+2023-11-02 00:21:32.801 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+WHERE (NULL LIKE N'') OR CHARINDEX(NULL, [p].[PersonName]) > 0
+2023-11-02 00:21:32.802 +10:30 [INF] Time for Filtered Persons from Database completed in 58.1 ms
+2023-11-02 00:21:32.802 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 00:21:32.803 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:32.803 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.803 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 00:21:32.803 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.803 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 00:21:32.803 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 00:21:32.804 +10:30 [INF] Executed ViewResult - view Index executed in 0.8541ms.
+2023-11-02 00:21:32.804 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 71.6535ms
+2023-11-02 00:21:32.804 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 00:21:32.804 +10:30 [INF] HTTP GET /Persons/Index responded 200 in 79.7638 ms
+2023-11-02 00:21:32.804 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/Persons/Index?searchBy=PersonName&searchString= - - - 200 - text/html;+charset=utf-8 80.2549ms

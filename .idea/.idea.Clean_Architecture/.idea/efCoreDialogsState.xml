@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EfCoreDialogsState">
+    <option name="keyValueStorage">
+      <map>
+        <entry key="Common:10f8da1b-1a05-430d-9dc3-817f85f25498:dbContext" value="ContactsManager.Infrastructure.DbContext.ApplicationDbContext" />
+        <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:noBuild" value="false" />
+        <entry key="Common:outputFolder" value="Migrations" />
+        <entry key="Common:useDefaultConnection" value="true" />
+      </map>
+    </option>
+  </component>
+</project>
