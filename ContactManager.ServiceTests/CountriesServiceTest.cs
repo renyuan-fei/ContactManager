@@ -11,8 +11,7 @@ using Moq;
 
 using RepositoryContracts;
 
-using ServiceContracts_Country.DTO;
-using ServiceContracts_Country.ICountriesService;
+using ServiceContracts.DTO;
 
 namespace ContactManager.ServiceTests
 {

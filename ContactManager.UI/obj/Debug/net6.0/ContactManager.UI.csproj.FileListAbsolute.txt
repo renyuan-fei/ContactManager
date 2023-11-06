@@ -123,3 +123,11 @@
 /Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/obj/Debug/net6.0/ContactManager.UI.pdb
 /Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/obj/Debug/net6.0/ContactManager.UI.genruntimeconfig.cache
 /Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/obj/Debug/net6.0/ref/ContactManager.UI.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.AspNet.Identity.Core.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.UI.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.Extensions.FileProviders.Embedded.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
+/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll

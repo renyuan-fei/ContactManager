@@ -49,17 +49,44 @@ builder.Services.AddHttpLogging(options =>
 var app = builder.Build();
 
 if (builder.Environment.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
-else { app.UseExceptionHandlingMiddleware(); }
+else
+{
+  app.UseExceptionHandler("/Error");
+  app.UseExceptionHandlingMiddleware();
+}
 
 // if (builder.Environment.IsEnvironment("Test") == false)
 // {
 //   Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot",
 //                                                   wkhtmltopdfRelativePath: "Rotativa");
 // }
+// 启动https
+//-------------------------------------------------------------------------------
+app.UseHsts();
+app.UseHttpsRedirection();
+//-------------------------------------------------------------------------------
 app.UseSerilogRequestLogging();
 app.UseStaticFiles();
-app.UseRouting();
-app.MapControllers();
+app.UseRouting(); // identifying action method based route
+
+app.UseAuthentication(); // reading identity cookie
+app.UseAuthorization(); // verifying identity
+app.MapControllers(); // execute the filter pipeline (action + result filters)
+
+// 定义路由
+app.UseEndpoints(endpoints => {
+  endpoints.MapControllerRoute(
+                               name: "areas",
+                               pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
+  //Admin/Home/Index
+  //Admin
+
+  endpoints.MapControllerRoute(
+                               name: "default",
+                               pattern: "{controller}/{action}/{id?}"
+                              );
+});
 
 app.Run();
 

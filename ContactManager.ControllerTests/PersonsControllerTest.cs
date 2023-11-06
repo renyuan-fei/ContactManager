@@ -3,6 +3,8 @@ using AutoFixture;
 using ContactManager.UI.Controllers;
 
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.ICountriesService;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using FluentAssertions;
 
@@ -11,10 +13,10 @@ using Microsoft.Extensions.Logging;
 
 using Moq;
 
-using ServiceContracts_Country.DTO;
 using ServiceContracts_Country.Enums;
-using ServiceContracts_Country.ICountriesService;
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactManager.ControllerTests
 {

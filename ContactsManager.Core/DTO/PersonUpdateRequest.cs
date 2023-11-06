@@ -4,45 +4,36 @@ using Entities;
 
 using ServiceContracts_Country.Enums;
 
-namespace ContactsManager.Core.DTO;
-
-/// <summary>
-///   Represents the DTO class that contains the person details to update
-/// </summary>
-public class PersonUpdateRequest
+namespace ContactsManager.Core.DTO
 {
-  [ Required(ErrorMessage = "Person ID can't be blank") ]
-  public Guid PersonID { get; set; }
-
-  [ Required(ErrorMessage = "Person Name can't be blank") ]
-  public string? PersonName { get; set; }
-
-  [ Required(ErrorMessage = "Email can't be blank") ]
-  [ EmailAddress(ErrorMessage = "Email value should be a valid email") ]
-  public string? Email { get; set; }
-
-  public DateTime?      DateOfBirth        { get; set; }
-  public GenderOptions? Gender             { get; set; }
-  public Guid?          CountryID          { get; set; }
-  public string?        Address            { get; set; }
-  public bool           ReceiveNewsLetters { get; set; }
-
   /// <summary>
-  ///   Converts the current object of PersonAddRequest into a new object of Person type
+  /// Represents the DTO class that contains the person details to update
   /// </summary>
-  /// <returns>Returns Person object</returns>
-  public Person ToPerson()
+  public class PersonUpdateRequest
   {
-    return new Person
+    [Required(ErrorMessage = "Person ID can't be blank")]
+    public Guid PersonID { get; set; }
+
+    [Required(ErrorMessage = "Person Name can't be blank")]
+    public string? PersonName { get; set; }
+
+    [Required(ErrorMessage = "Email can't be blank")]
+    [EmailAddress(ErrorMessage = "Email value should be a valid email")]
+    public string? Email { get; set; }
+
+    public DateTime? DateOfBirth { get; set; }
+    public GenderOptions? Gender { get; set; }
+    public Guid? CountryID { get; set; }
+    public string? Address { get; set; }
+    public bool ReceiveNewsLetters { get; set; }
+
+    /// <summary>
+    /// Converts the current object of PersonAddRequest into a new object of Person type
+    /// </summary>
+    /// <returns>Returns Person object</returns>
+    public Person ToPerson()
     {
-        PersonID = PersonID,
-        PersonName = PersonName,
-        Email = Email,
-        DateOfBirth = DateOfBirth,
-        Gender = Gender.ToString(),
-        Address = Address,
-        CountryID = CountryID,
-        ReceiveNewsLetters = ReceiveNewsLetters
-    };
+      return new Person() { PersonID = PersonID, PersonName = PersonName, Email = Email, DateOfBirth = DateOfBirth, Gender = Gender.ToString(), Address = Address, CountryID = CountryID, ReceiveNewsLetters = ReceiveNewsLetters };
+    }
   }
 }

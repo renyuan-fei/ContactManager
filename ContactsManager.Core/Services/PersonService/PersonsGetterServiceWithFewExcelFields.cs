@@ -1,6 +1,9 @@
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.PersonService;
 

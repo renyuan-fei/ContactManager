@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -16,6 +17,8 @@ using Serilog;
 using SerilogTimings;
 
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.PersonService
 {

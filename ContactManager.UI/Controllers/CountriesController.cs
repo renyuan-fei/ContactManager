@@ -2,8 +2,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-using ServiceContracts_Country.ICountriesService;
-
 namespace ContactManager.UI.Controllers
 {
   [Route("[controller]")]

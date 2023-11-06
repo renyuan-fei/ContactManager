@@ -1,9 +1,10 @@
-﻿using Entities;
+﻿using ContactsManager.Core.ServiceContracts.ICountriesService;
+
+using Entities;
 
 using RepositoryContracts;
 
-using ServiceContracts_Country.DTO;
-using ServiceContracts_Country.ICountriesService;
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.CountriesService
 {

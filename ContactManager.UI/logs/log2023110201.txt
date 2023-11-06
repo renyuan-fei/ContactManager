@@ -67,3 +67,35 @@ LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
 2023-11-02 01:39:35.029 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
 2023-11-02 01:39:35.033 +10:30 [INF] HTTP GET / responded 200 in 1394.2548 ms
 2023-11-02 01:39:35.049 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 1417.0122ms
+2023-11-02 01:59:29.406 +10:30 [INF] User profile is available. Using '/Users/frank/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-02 01:59:29.482 +10:30 [INF] Now listening on: https://localhost:7276
+2023-11-02 01:59:29.482 +10:30 [INF] Now listening on: http://localhost:5062
+2023-11-02 01:59:30.182 +10:30 [INF] Request starting HTTP/1.1 GET https://localhost:7276/ - -
+2023-11-02 01:59:30.201 +10:30 [INF] Executing endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:59:30.231 +10:30 [INF] Route matche2023-11-02 01:59:44.170 +10:30 [INF] Application is shutting down...
+er action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.String, ServiceContracts_Country.Enums.SortOrderOptions) on controller ContactManager.UI.Controllers.PersonsController (ContactManager.UI).
+2023-11-02 01:59:30.325 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:30.326 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:30.326 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:59:30.326 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:30.326 +10:30 [INF] PersonsListActionFilter.OnActionExecuting method
+2023-11-02 01:59:30.327 +10:30 [INF] Index action method of PersonsController
+2023-11-02 01:59:30.329 +10:30 [INF] GetFilteredPersons of PersonsService
+2023-11-02 01:59:30.330 +10:30 [INF] GetAllPersons of PersonsRepository
+2023-11-02 01:59:31.362 +10:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PersonID], [p].[Address], [p].[CountryID], [p].[DateOfBirth], [p].[Email], [p].[Gender], [p].[PersonName], [p].[ReceiveNewsLetters], [p].[TaxIdentificationNumber], [c].[CountryID], [c].[CountryName]
+FROM [Persons] AS [p]
+LEFT JOIN [Countries] AS [c] ON [p].[CountryID] = [c].[CountryID]
+2023-11-02 01:59:31.425 +10:30 [INF] Time for Filtered Persons from Database completed in 1095.4 ms
+2023-11-02 01:59:31.432 +10:30 [INF] GetSortedPersons of PersonsService
+2023-11-02 01:59:31.436 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:59:31.459 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:31.460 +10:30 [INF] PersonsListActionFilter.OnActionExecuted method
+2023-11-02 01:59:31.460 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:31.460 +10:30 [INF] ResponseHeaderActionFilter.OnActionExecutionAsync method
+2023-11-02 01:59:31.470 +10:30 [INF] Executing ViewResult, running view Index.
+2023-11-02 01:59:31.601 +10:30 [INF] Executed ViewResult - view Index executed in 132.5678ms.
+2023-11-02 01:59:31.603 +10:30 [INF] Executed action ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI) in 1371.5093ms
+2023-11-02 01:59:31.604 +10:30 [INF] Executed endpoint 'ContactManager.UI.Controllers.PersonsController.Index (ContactManager.UI)'
+2023-11-02 01:59:31.608 +10:30 [INF] HTTP GET / responded 200 in 1420.1687 ms
+2023-11-02 01:59:31.624 +10:30 [INF] Request finished HTTP/1.1 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 1444.2102ms

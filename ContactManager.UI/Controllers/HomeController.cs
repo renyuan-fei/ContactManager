@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CRUDExample.Controllers
+namespace ContactManager.UI.Controllers
 {
   public class HomeController : Controller
   {
@@ -18,5 +18,6 @@ namespace CRUDExample.Controllers
       }
       return View(); //Views/Shared/Error
     }
+
   }
 }

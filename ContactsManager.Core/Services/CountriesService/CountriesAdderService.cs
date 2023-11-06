@@ -4,7 +4,7 @@ using Entities;
 
 using RepositoryContracts;
 
-using ServiceContracts_Country.DTO;
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.CountriesService
 {

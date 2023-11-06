@@ -1,11 +1,9 @@
 using ContactManager.UI.Controllers;
 
-using CRUDExample.Controllers;
+using ContactsManager.Core.ServiceContracts.ICountriesService;
 
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
-using ServiceContracts_Country.ICountriesService;
 
 namespace ContactManager.UI.Filters.ActionFilters;
 

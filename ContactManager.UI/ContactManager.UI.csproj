@@ -113,4 +113,8 @@
       <UpToDateCheckInput Remove="Pages\_ViewStart.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Areas\" />
+    </ItemGroup>
+
 </Project>

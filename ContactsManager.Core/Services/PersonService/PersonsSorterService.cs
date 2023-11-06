@@ -1,4 +1,5 @@
 ﻿using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using Microsoft.Extensions.Logging;
 
@@ -8,6 +9,8 @@ using Serilog;
 
 using ServiceContracts_Country.Enums;
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.PersonService
 {

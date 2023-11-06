@@ -1,9 +1,10 @@
 using ContactsManager.Core.DTO;
 
-using ServiceContracts_Country.DTO;
 using ServiceContracts_Country.Enums;
 
-namespace ServiceContracts_Country.IPersonService;
+using ServiceContracts.DTO;
+
+namespace ContactsManager.Core.ServiceContracts.IPersonService;
 
 /// <summary>
 ///   Represents business logic for manipulating Perosn entity

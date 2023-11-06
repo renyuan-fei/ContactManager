@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/frank/RiderProjects/Clean_Architecture/ContactManager.UI/Views/Countries/UploadFromExcel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ291bnRyaWVzL1VwbG9hZEZyb21FeGNlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

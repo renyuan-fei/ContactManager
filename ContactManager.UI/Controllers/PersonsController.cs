@@ -5,15 +5,18 @@ using ContactManager.UI.Filters.ResourcesFilters;
 using ContactManager.UI.Filters.ResultFilters;
 
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.ICountriesService;
+using ContactsManager.Core.ServiceContracts.IPersonService;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using Rotativa.AspNetCore;
 
-using ServiceContracts_Country.DTO;
 using ServiceContracts_Country.Enums;
-using ServiceContracts_Country.ICountriesService;
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactManager.UI.Controllers
 {

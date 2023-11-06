@@ -1,4 +1,5 @@
 ﻿using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using Entities;
 
@@ -11,6 +12,8 @@ using Serilog;
 using Service_Country.Helpers;
 
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.PersonService
 {
@@ -53,6 +56,5 @@ namespace ContactsManager.Core.Services.PersonService
    //convert the Person object into PersonResponse type
    return person.ToPersonResponse();
   }
-
  }
 }

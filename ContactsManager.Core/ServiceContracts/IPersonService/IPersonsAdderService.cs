@@ -1,8 +1,8 @@
 using ContactsManager.Core.DTO;
 
-using ServiceContracts_Country.DTO;
+using ServiceContracts.DTO;
 
-namespace ServiceContracts_Country.IPersonService;
+namespace ContactsManager.Core.ServiceContracts.IPersonService;
 
 //ISP
 // ISP - Interface Segregation Principle

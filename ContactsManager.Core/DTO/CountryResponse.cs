@@ -1,40 +1,46 @@
-﻿using Entities;
+﻿using System;
+using Entities;
 
-namespace ServiceContracts_Country.DTO;
-
-/// <summary>
-///   DTO class that is used as return type for most of CountriesService methods
-/// </summary>
-public class CountryResponse
+namespace ServiceContracts.DTO
 {
-  public Guid    CountryID   { get; set; }
-  public string? CountryName { get; set; }
-
-  //It compares the current object to another object of CountryResponse type and returns true, if both values are same; otherwise returns false
-  public override bool Equals(object? obj)
+  /// <summary>
+  /// DTO class that is used as return type for most of CountriesService methods
+  /// </summary>
+  public class CountryResponse
   {
-    if (obj == null) { return false; }
+    public Guid CountryID { get; set; }
+    public string? CountryName { get; set; }
 
-    if (obj.GetType() != typeof(CountryResponse)) { return false; }
+    //It compares the current object to another object of CountryResponse type and returns true, if both values are same; otherwise returns false
+    public override bool Equals(object? obj)
+    {
+      if (obj == null)
+      {
+        return false;
+      }
 
-    var country_to_compare = (CountryResponse)obj;
+      if (obj.GetType() != typeof(CountryResponse))
+      {
+        return false;
+      }
+      CountryResponse country_to_compare = (CountryResponse)obj;
 
-    return CountryID == country_to_compare.CountryID
-        && CountryName == country_to_compare.CountryName;
+      return CountryID == country_to_compare.CountryID && CountryName == country_to_compare.CountryName;
+    }
+
+    //returns an unique key for the current object
+    public override int GetHashCode()
+    {
+      return base.GetHashCode();
+    }
   }
 
-  //returns an unique key for the current object
-  public override int GetHashCode() { return base.GetHashCode(); }
-}
-
-public static class CountryExtensions
-{
-  //Converts from Country object to CountryResponse object
-  public static CountryResponse ToCountryResponse(this Country country)
+  public static class CountryExtensions
   {
-    return new CountryResponse
+    //Converts from Country object to CountryResponse object
+    public static CountryResponse ToCountryResponse(this Country country)
     {
-        CountryID = country.CountryID, CountryName = country.CountryName
-    };
+      return new CountryResponse() {  CountryID = country.CountryID, CountryName = country.CountryName };
+    }
   }
 }

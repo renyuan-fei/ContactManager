@@ -3,6 +3,7 @@
 using AutoFixture;
 
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 using ContactsManager.Core.Services.PersonService;
 
 using Entities;
@@ -19,6 +20,8 @@ using Serilog;
 
 using ServiceContracts_Country.Enums;
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 using Xunit.Abstractions;
 

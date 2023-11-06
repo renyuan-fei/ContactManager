@@ -2,11 +2,11 @@ using ContactManager.UI.Controllers;
 
 using ContactsManager.Core.DTO;
 
-using CRUDExample.Controllers;
-
 using Microsoft.AspNetCore.Mvc.Filters;
 
 using ServiceContracts_Country.Enums;
+
+using ServiceContracts.DTO;
 
 namespace ContactManager.UI.Filters.ActionFilters;
 

@@ -1,17 +1,23 @@
 using System.Text.Json;
 
+using ContactsManager.Core.Domain.IdentityEntities;
+
 using Entities;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContactsManager.Infrastructure.DbContext;
 
-public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
 {
   public ApplicationDbContext() { }
 
-  public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+  public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :
+      base(options)
+  {
+  }
 
   // virtual 用于mock测试
   public virtual DbSet<Country>? Countries { get; set; }

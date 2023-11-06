@@ -1,4 +1,5 @@
 ﻿using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts.IPersonService;
 
 using Entities;
 
@@ -13,6 +14,8 @@ using Serilog;
 using Service_Country.Helpers;
 
 using ServiceContracts_Country.IPersonService;
+
+using ServiceContracts.DTO;
 
 namespace ContactsManager.Core.Services.PersonService
 {
